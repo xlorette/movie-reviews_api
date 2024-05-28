@@ -1,7 +1,9 @@
-package dev.movies.user;
+package dev.movies.user.service;
 
 import dev.movies.exceptions.EntityNotFoundException;
 import dev.movies.exceptions.ExistingCredentialsException;
+import dev.movies.user.entity.User;
+import dev.movies.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;

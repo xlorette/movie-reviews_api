@@ -5,12 +5,10 @@ import dev.movies.movie.entity.Movie;
 import dev.movies.movie.service.MovieService;
 import dev.movies.review.entity.Review;
 import dev.movies.review.repository.ReviewRepository;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 import java.util.Optional;
 
 @Service

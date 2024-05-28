@@ -1,4 +1,4 @@
-package dev.movies.user;
+package dev.movies.user.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import dev.movies.review.entity.Review;
