@@ -1,13 +1,16 @@
 package dev.movies.review.service;
 
+import dev.movies.exceptions.EntityNotFoundException;
 import dev.movies.movie.entity.Movie;
 import dev.movies.movie.service.MovieService;
 import dev.movies.review.entity.Review;
 import dev.movies.review.repository.ReviewRepository;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,18 +22,15 @@ public class ReviewService {
     private final MovieService movieService;
 
 
-    public Review addReview(String imdbId, Review review) {
+    public Review addReview(String imdbId, Review review, String username) {
 
         Optional<Movie> movieOpt = movieService.getMovieByImdbId(imdbId);
         if (movieOpt.isEmpty()) {
-            throw new RuntimeException(); //TODO to be replaced with true exceptioon
+            throw new EntityNotFoundException("User not found!");
         }
 
-        Movie movie = movieOpt.get();
-
-        movie.addReview(review);
-        movieService.save(movie);
-
+        review.setMovie(movieOpt.get());
+        review.setUsername(username);
         return reviewRepository.save(review);
     }
 }

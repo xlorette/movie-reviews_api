@@ -5,7 +5,9 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -13,13 +15,13 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name = "movies")
 @Entity
+@Slf4j
 public class Movie {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
+    @Id
     private String imdbId;
+
     private String title;
     private String releaseDate;
     private String trailerLink;
@@ -30,12 +32,13 @@ public class Movie {
     @ElementCollection
     private List<String> backdrops;
 
-    @JoinColumn(name = "MOVIE_ID")
-    @OneToMany
-    List<Review> reviews;
+    @OneToMany(mappedBy = "movie")
+    private List<Review> reviews;
 
 
     public void addReview(Review review) {
+        log.warn("added :{} ", review);
         reviews.add(review);
+        log.warn("list after adding : {}", review);
     }
 }

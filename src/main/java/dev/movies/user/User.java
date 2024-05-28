@@ -25,8 +25,4 @@ public class User {
     private String username;
     private String password;
     private String emailAddress;
-
-    @OneToMany(mappedBy = "user")
-    @JsonIgnore
-    private List<Review> reviews;
 }
