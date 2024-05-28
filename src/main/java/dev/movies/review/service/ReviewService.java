@@ -20,12 +20,12 @@ public class ReviewService {
 
 
     public Review addReview(String imdbId, Review review) {
-        Optional<Movie> movieOpt = movieService.getMovieByImdbId(imdbId);
 
+        Optional<Movie> movieOpt = movieService.getMovieByImdbId(imdbId);
         if (movieOpt.isEmpty()) {
-            throw new RuntimeException();
-            //throw error sa stie clientu ca nu exista
+            throw new RuntimeException(); //TODO to be replaced with true exceptioon
         }
+
         Movie movie = movieOpt.get();
 
         movie.addReview(review);

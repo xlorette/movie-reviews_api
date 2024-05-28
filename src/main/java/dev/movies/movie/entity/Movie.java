@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -31,11 +30,12 @@ public class Movie {
     @ElementCollection
     private List<String> backdrops;
 
-    @OneToMany(mappedBy = "reviews")
+    @JoinColumn(name = "MOVIE_ID")
+    @OneToMany
     List<Review> reviews;
 
 
-    public void addReview(Review review){
+    public void addReview(Review review) {
         reviews.add(review);
     }
 }

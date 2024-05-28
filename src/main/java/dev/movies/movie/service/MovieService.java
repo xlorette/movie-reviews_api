@@ -12,26 +12,21 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class MovieService {
 
-  private final MovieRepository movieRepository;
+    private final MovieRepository movieRepository;
 
 
-  public Movie getMovieByImdbId(String imdbId) {
+    public Optional<Movie> getMovieByImdbId(String imdbId) {
 
-    Optional<Movie> movieByImdbIdOpt = movieRepository.findMovieByImdbId(imdbId);
-    if(movieByImdbIdOpt.isEmpty())
-    {
-      throw new RuntimeException(); //TODO to be replaced with true exceptioon
+        return movieRepository.findMovieByImdbId(imdbId);
+
     }
-    return movieByImdbIdOpt.get();
 
-  }
+    public void save(Movie movie) {
 
-  public void save(Movie movie) {
+        movieRepository.save(movie);
+    }
 
-    movieRepository.save(movie);
-  }
-
-  public List<Movie> getAllMovies() {
-    return movieRepository.findAll();
-  }
+    public List<Movie> getAllMovies() {
+        return movieRepository.findAll();
+    }
 }

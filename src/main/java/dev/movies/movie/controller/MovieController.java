@@ -3,9 +3,6 @@ package dev.movies.movie.controller;
 import dev.movies.movie.entity.Movie;
 import dev.movies.movie.service.MovieService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,7 +22,7 @@ public class MovieController {
   }
 
   @GetMapping("/imdbid/{imdbId}")
-  public Movie getMovieByImdbId(@PathVariable String imdbId) {
+  public Optional<Movie> getMovieByImdbId(@PathVariable String imdbId) {
     return movieService.getMovieByImdbId(imdbId);
   }
 }
