@@ -1,4 +1,4 @@
-package dev.movies.mySpringMovieApp;
+package dev.movies;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
