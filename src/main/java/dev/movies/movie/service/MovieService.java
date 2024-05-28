@@ -33,4 +33,8 @@ public class MovieService {
     public void saveMovies(List<Movie> movies) {
         movieRepository.saveAll(movies);
     }
+
+    public List<Movie> getAllMoviesByImdbIds(List<String> movieImdbIds) {
+        return movieRepository.findAllByImdbIdIn(movieImdbIds);
+    }
 }
