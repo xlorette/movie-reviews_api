@@ -12,10 +12,10 @@ public class ReviewController {
 
     private final ReviewService reviewService;
 
-    @PostMapping(value = "/addreview/imdbid/{imdbId}/username/{username}")
-    public Review addReview(@PathVariable String imdbId, @PathVariable String username, @RequestBody Review review) {
+    @PostMapping(value = "/addreview/imdbid/{imdbId}/userid/{userId}")
+    public Review addReview(@PathVariable String imdbId, @PathVariable Long userId, @RequestBody Review review) {
 
-        return reviewService.addReview(imdbId, review, username);
+        return reviewService.addReview(imdbId, review, userId);
     }
 
 }
